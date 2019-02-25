@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 ruby '2.4.0'
 gem 'rails', '4.2.10'
+
+gem 'pg', '~> 0.20'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
@@ -21,7 +23,7 @@ group :test do
   gem 'cucumber-rails-training-wheels'
 end
 group :production do
-  gem 'pg'
+	gem 'pg', '~> 0.20'
 end
 
 # Gems used only for assets and not required
