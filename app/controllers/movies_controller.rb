@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
   
   def movie_params
-    params.require(:movie).permit(:title, :rating, :description, :release_date)
+    params.require(:movie).permit(:title, :rating, :description, :release_date,:director)
   end
 
   def show
@@ -46,6 +46,17 @@ class MoviesController < ApplicationController
 
   def edit
     @movie = Movie.find params[:id]
+  end
+
+  def find_with_same_director	  
+    @cur_movie = Movie.find params[:id]
+    if @cur_movie.director == nil
+	    flash[:notice] = "'#{@cur_movie.title}' has no director info."
+	    redirect_to movies_path
+    else
+	    @movies_wsd = Movie.where(director: @cur_movie.director)
+    end
+
   end
 
   def update
