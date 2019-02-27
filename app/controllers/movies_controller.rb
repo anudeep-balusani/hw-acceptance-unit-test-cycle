@@ -50,7 +50,7 @@ class MoviesController < ApplicationController
 
   def find_with_same_director	  
     @cur_movie = Movie.find params[:id]
-    if @cur_movie.director == nil
+    if @cur_movie.director == '' || @cur_movie.director == nil
 	    flash[:notice] = "'#{@cur_movie.title}' has no director info."
 	    redirect_to movies_path
     else
